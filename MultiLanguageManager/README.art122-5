@@ -1,0 +1,15 @@
+Module Jamendo
+Author : Marc Despland
+Site : http://www.art122-5.net/index.php/Module_Jamendo
+Version : 0.1.0
+
+Jamendo : http://www.jamendo.com
+
+This module interacts with the jamendo's site to display the cover of one of the popular albums distributed by Jamendo.
+
+The documentation and requirement can be found at http://www.art122-5.net/index.php/Module_Jamendo
+
+This module is distributed under the GPL v2 Licence : http://www.fsf.org/licensing/licenses/gpl.html
+
+You are free to modify or redistribute this module, but you must keep this file in the package
+
