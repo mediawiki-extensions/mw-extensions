@@ -104,10 +104,18 @@ function wfMultiLanguageManagerExtension() {
  */
 $wgHooks['LoadAllMessages'][]					= 'mlLoadMessages';					//1.8.0
 $wgHooks['SkinTemplateContentActions'][]		= 'mlAddLanguageAction';			//1.5.0
-//$wgHooks['BeforePageDisplay'][] 				= 'mlChangeLanguage'; 				//1.7.0
+$wgHooks['BeforePageDisplay'][] 				= 'mlChangeLanguage'; 				//1.7.0
 $wgHooks['ArticleDeleteComplete'][] 			= 'mlCleanLanguageOnArticleDelete';	//1.4.0
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] 	= 'mlGenerateSideBar';				//1.10.0
 $wgHooks['ParserBeforeInternalParse'][]  		= 'mlSetLangParse';					//1.5.0
+#$wgHooks['MonoBookTemplateToolboxEnd'][]  		= 'mlDisplayTranslations';					//1.5.0
+#$wgHooks['MonoBookTemplateToolboxEnd'][]  		= 'mlGenerateSideBar';					//1.5.0
+
+
+
+function mlDisplayTranslations( $this ) { 
+
+}
 
 /**
  * Connected user can choose their language, guest not
@@ -168,8 +176,12 @@ function mlCleanLanguageOnArticleDelete(&$article, &$user, &$reason) {
 
 
 function mlGenerateSideBar(&$skin,&$tpl) {
-	global $wgLanguageCode;		
-	$lines = explode( "\n", wfMsgForContent( 'sidebar/'.$wgLanguageCode ) );
+
+	global $wgLanguageCode;
+	// wfMsg does know to:
+	// * return  Mediawiki::Sidebar for default language
+	// * return MediaWiki::Sidebar/xx for xx language (if xx is not default)
+	$lines = explode( "\n", wfMsg( 'sidebar')); 
 	foreach ($lines as $line) {
 		if (strpos($line, '*') !== 0)
 			continue;

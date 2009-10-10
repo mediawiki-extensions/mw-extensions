@@ -317,7 +317,7 @@ class MultiLanguageManager_controller {
  	  				case 1 : 
  	  					//Only one translation avalaible, good job
  	  					//So in this case we go to the page without displayed anything 
- 	  					$output.=$this->display->displayDirectPageLink($displayLanguage,$translationList[0]) . '<br>';
+ 	  					$output.="<li>" . $this->display->displayDirectPageLink($displayLanguage,$translationList[0]) . "</li>";
  	  				break;
  	  				default :
  	  					//Argh a lot of tranlation
